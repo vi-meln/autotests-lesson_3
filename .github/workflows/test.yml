@@ -36,7 +36,7 @@ jobs:
           done
       - run: docker compose logs app
       - run: docker compose logs db
-      - run: pytest tests --junit-xml=test-results.xml
+      - run: docker compose exec app pytest tests --junit-xml=test-results.xml
         env:
           APP_URL: http://app:80
 
