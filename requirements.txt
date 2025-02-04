@@ -1,5 +1,6 @@
 pytest
-fastapi
+fastapi[standard]
+uvicorn
 email-validator
 python-dotenv
 requests
