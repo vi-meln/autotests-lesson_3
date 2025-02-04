@@ -34,9 +34,12 @@ jobs:
             echo "Waiting for PostgreSQL..."
             sleep 2
           done
+      - run: docker compose logs app
+      - run: docker compose logs db
+      - run: curl -v http://127.0.0.1:8002/status || exit 1
       - run: pytest tests --junit-xml=test-results.xml
         env:
-          APP_URL: http://127.0.0.1:8002
+          APP_URL: http://app:80
 
       - run: docker compose logs app
         if: always()
